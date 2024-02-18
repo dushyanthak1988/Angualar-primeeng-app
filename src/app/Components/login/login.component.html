@@ -1,0 +1,27 @@
+<form [formGroup]="loginform">
+    <p-card header="Login" [style]="{ width: '360px' }">
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="text" pInputText formControlName="email"  type="Email" class="w-full" name="email" placeholder="Type your Email" />
+            <small
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="block p-error"
+      >
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Email should be valid</div>
+      </small>
+
+            <label for="password">Password</label>
+            <input type="password" pInputText formControlName="password"  type="password" class="w-full" name="password" placeholder="Type your Password" />
+            <small
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="block p-error"
+          >
+            <div *ngIf="password.errors?.['required']">Password is required.</div>
+          </small>
+        
+        </div>
+        <p-button label="SIGN  IN" styleClass="W-Full" icon="pi pi-check" iconPos="right"  [disabled]="loginform.invalid" ></p-button>
+        <div class="mt-2"> Not a member <a  routerLink="/register" >Register </a></div>
+    </p-card>
+</form>
