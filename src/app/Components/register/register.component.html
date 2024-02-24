@@ -1,7 +1,7 @@
 <form [formGroup]="Registerform">
     <p-card header="Register" [style]="{ width: '360px' }">
     <div class="field">
-        <label for="fullName">fullName</label>
+        <label for="fullName">Full Name</label>
         <input type="text" pInputText formControlName="fullName"   class="w-full" name="fullName" placeholder="Type your Name" />
         <small
                 *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
@@ -13,7 +13,7 @@
     </div>
 
     <div class="field">
-        <label for="email">fullName</label>
+        <label for="email">Email</label>
         <input type="text" pInputText formControlName="email"   class="w-full" name="email" placeholder="Type your email" />
         <small
                 *ngIf="email.invalid && (email.dirty || email.touched)"
