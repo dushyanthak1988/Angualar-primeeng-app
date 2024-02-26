@@ -25,7 +25,7 @@
     </div>
     <div class="field">
         <label for="password">Password</label>
-        <input type="text" pInputText formControlName="password"   class="w-full" name="password" placeholder="Type your Password" />
+        <input type="password" pInputText formControlName="password"   class="w-full" name="password" placeholder="Type your Password" />
         <small
                 *ngIf="password.invalid && (password.dirty || password.touched)"
                 class="block p-error"
@@ -37,7 +37,7 @@
 
     <div class="field">
         <label for="Confirmpassword">Confirmpassword</label>
-        <input type="text" pInputText formControlName="Confirmpassword"   class="w-full" name="Confirmpassword" placeholder="Type your Confirmpassword" />
+        <input type="password" pInputText formControlName="Confirmpassword"   class="w-full" name="Confirmpassword" placeholder="Type your Confirmpassword" />
         <small
                 *ngIf="Confirmpassword.invalid && (Confirmpassword.dirty || Confirmpassword.touched)"
                 class="block p-error"
@@ -45,6 +45,11 @@
                 <div *ngIf="Confirmpassword.errors?.['required']">Confirmpassword is required.</div>
                 <div *ngIf="Confirmpassword.errors?.['password']">Confirmpassword should be valid</div>
         </small> 
+        <small
+        class="block p-error"
+        *ngIf="Registerform.errors?.['passwordMismatch']">
+                Password should match
+            </small>
     </div>
 
     <p-button label="Register" styleClass="W-Full" icon="pi pi-check" iconPos="right"  [disabled]="Registerform.invalid" ></p-button>

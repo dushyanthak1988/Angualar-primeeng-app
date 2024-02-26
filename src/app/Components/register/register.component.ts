@@ -10,15 +10,14 @@ import {passwordmatchValidator } from 'src/app/shared/password-match-directives'
 export class RegisterComponent {
 
   Registerform = this.fb.group({
-
-    fullName: ["",[Validators.required , Validators.pattern(/^[A-Za-z]+(?:[A-Za-z]+)*$/)]], 
+    fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ["", [Validators.required]],
-    Confirmpassword: ["", [Validators.required]],
-    passwordmatching : passwordmatchValidator
+    password: ['', Validators.required],
+    Confirmpassword: ['', Validators.required]
+  }, {
+    validators: passwordmatchValidator
+  })
 
-    }
-  );
 
   constructor( private fb: FormBuilder){  }
 
