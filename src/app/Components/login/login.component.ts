@@ -19,31 +19,29 @@ export class LoginComponent {
               private fb: FormBuilder,
               private authSerice : AuthService , 
               private messageService : MessageService ,
-              private rout: Router) {}
+              private router: Router) {}
   get email() {
     return this.loginform.controls['email'];
   }
   get password() { return this.loginform.controls['password']; }
 
-  LoginDetails(){
-    const { email, password} = this.loginform.value ; 
-    this.authSerice.getUserByEmail( email as string ).subscribe ( 
-      response => { 
-        if ( response.length >0 && response[0].password === password ){
-          sessionStorage.setItem('email' ,email as string );
-           this.rout.navigate (['/Home']);
+  LoginDetails() {
+    const { email, password } = this.loginform.value;
+    this.authSerice.getUserByEmail(email as string).subscribe(
+      response => {
+        if (response.length > 0 && response[0].password === password) {
+          sessionStorage.setItem('email', email as string);
+          this.router.navigate(['/home']);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login successful' });
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Email or password is wrong' });
         }
-        else 
-        
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Email or  password is wrong' });
-      }, 
+      },
       error => {
         console.error(error);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
       }
-       
-    )
-
+    );
   }
 
 }
