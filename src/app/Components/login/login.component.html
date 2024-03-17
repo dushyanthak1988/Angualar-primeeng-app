@@ -1,8 +1,14 @@
-<form [formGroup]="loginform">
+<form [formGroup]="loginform" (ngSubmit)="LoginDetails()">
     <p-card header="Login" [style]="{ width: '360px' }">
         <div class="field">
             <label for="email">Email</label>
-            <input type="text" pInputText formControlName="email"  type="Email" class="w-full" name="email" placeholder="Type your Email" />
+            <input 
+                  type="text" 
+                  pInputText 
+                  formControlName="email"  
+                  type="Email" class="w-full" 
+                  name="email" 
+                  placeholder="Type your Email" />
             <small
         *ngIf="email.invalid && (email.dirty || email.touched)"
         class="block p-error"
@@ -12,7 +18,14 @@
       </small>
 
             <label for="password">Password</label>
-            <input type="password" pInputText formControlName="password"  type="password" class="w-full" name="password" placeholder="Type your Password" />
+            <input 
+                  type="password" 
+                  pInputText 
+                  formControlName="password" 
+                  type="password" 
+                  class="w-full" 
+                  name="password" 
+                  placeholder="Type your Password" />
             <small
             *ngIf="password.invalid && (password.dirty || password.touched)"
             class="block p-error"
@@ -21,7 +34,14 @@
           </small>
         
         </div>
-        <p-button label="SIGN  IN" styleClass="W-Full" icon="pi pi-check" iconPos="right"  [disabled]="loginform.invalid" ></p-button>
+        <p-button 
+                  label="SIGN  IN" 
+                  styleClass="W-Full" 
+                  icon="pi pi-check" 
+                  iconPos="right"  
+                  [disabled]="loginform.invalid" 
+                  type="submit"
+        ></p-button>
         <div class="mt-2"> Not a member <a  routerLink="/register" >Register </a></div>
     </p-card>
 </form>
